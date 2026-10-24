@@ -20,13 +20,8 @@ router.post('/tickets/:id/messages', async (req, res) => {
   if (!body) return res.status(400).json({ error: 'body required' });
 
   try {
-    console.log(req.body)
-    console.log(req.user)
-
-    //  lets find author id from ticekt tanleusing  prams id then inset it to author beause if we dont do that then amdin uthor id will e inserted
     const find_author_id = await pool.query(`SELECT author_id FROM tickets WHERE id = $1`, [req.params.id])
     const author_id = find_author_id.rows[0].author_id
-    console.log(find_author_id)
 
     const msg = await pool.query(
       `INSERT INTO ticket_messages (ticket_id, sender_user_id, sender_role, body, is_internal)
@@ -98,6 +93,20 @@ router.post('/tickets/:id/draft', async (req, res) => {
     res.json({ draft });
   } catch (err) {
     res.status(503).json({ draft: '', error: 'AI unavailable — type manually' });
+  }
+});
+
+// PATCH /api/admin/tickets/:id/assign
+router.patch('/tickets/:id/assign', async (req, res) => {
+  const author_id = req.user.author_id;
+  try {
+    await pool.query(
+      `UPDATE tickets SET assigned_to = $1, updated_at = NOW() WHERE id = $2`,
+      [author_id, req.params.id]
+    );
+    res.json({ assigned_to: author_id });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 

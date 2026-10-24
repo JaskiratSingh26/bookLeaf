@@ -7,9 +7,7 @@ const pool = require('../db/pool');
 // POST /api/auth/register
 router.post('/register', async (req, res) => {
   const { name, email, password, mobile } = req.body;
-  //check log
-  console.log(req.body);
-  if (!name || !email || !password) {
+if (!name || !email || !password) {
     return res.status(400).json({ error: 'name, email, password, role required' });
   }
   try {

@@ -26,8 +26,6 @@ async function classifyTicket(ticketId) {
       [ticketId]
     );
     const description = msgResult.rows[0]?.body || '';
-    console.log('Description:', description);
-    console.log('Ticket:', ticket);
 
     // 3. Short prompt — JSON only, low tokens
     const prompt = `You are a support ticket classifier for BookLeaf, a self-publishing company.
