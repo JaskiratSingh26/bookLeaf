@@ -13,6 +13,7 @@ Full-stack support portal for authors to raise tickets and admins to manage them
 
 | Role | Email | Password |
 |------|-------|----------|
+|Author|jaskirat@misfitscommunications.com|bookleaf@123
 |Admin | Admin@gmail.com | bookleaf@123 |
 | Author | priya.sharma@email.com | bookleaf@123 |
 | Author | rohit.kapoor@email.com | bookleaf@123 |
