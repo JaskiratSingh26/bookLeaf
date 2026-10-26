@@ -2,7 +2,7 @@
 
 Full-stack support portal for authors to raise tickets and admins to manage them with AI assistance.
 
-**Live Demo:** [Add after deploy]
+**Live Demo:** https://book-leaf-topaz.vercel.app/login
 **Backend:** Node.js + Express on Render
 **Frontend:** React on Vercel
 **Database:** PostgreSQL on Neon
